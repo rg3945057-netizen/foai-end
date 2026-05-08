@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased transition-colors duration-300;
+    @apply bg-gray-50 text-gray-900;
+    @apply dark:bg-space-900 dark:text-gray-100;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-md;
+    @apply border border-white/20 dark:border-white/10;
+    @apply rounded-2xl shadow-glass;
+  }
+
+  /* Glow button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600;
+    @apply hover:from-cyan-400 hover:to-blue-500;
+    @apply text-white font-semibold px-4 py-2 rounded-xl;
+    @apply transition-all duration-200 active:scale-95;
+    @apply shadow-glow-cyan hover:shadow-glow-blue;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-white/10 dark:hover:bg-white/10;
+    @apply border border-white/20 text-gray-700 dark:text-gray-300;
+    @apply font-medium px-4 py-2 rounded-xl transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-xl transition-all duration-200;
+    @apply hover:bg-white/10 dark:hover:bg-white/10 active:scale-90;
+  }
+
+  /* Stat value */
+  .stat-value {
+    @apply text-2xl font-bold font-mono;
+    @apply bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5;
+    @apply rounded-full text-xs font-medium;
+  }
+
+  .badge-cyan {
+    @apply badge bg-cyan-500/20 text-cyan-400 border border-cyan-500/30;
+  }
+
+  .badge-green {
+    @apply badge bg-green-500/20 text-green-400 border border-green-500/30;
+  }
+
+  .badge-yellow {
+    @apply badge bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+  }
+
+  .badge-red {
+    @apply badge bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+
+  /* Skeleton */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-white/10 rounded-xl;
+  }
+
+  /* Cyber grid background */
+  .cyber-bg {
+    background-image: 
+      linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Live indicator dot */
+  .live-dot {
+    @apply w-2 h-2 rounded-full bg-green-400;
+    animation: livePulse 2s ease-in-out infinite;
+  }
+
+  /* Chat bubble */
+  .chat-bubble-user {
+    @apply bg-gradient-to-r from-cyan-600 to-blue-600 text-white;
+    @apply rounded-2xl rounded-tr-sm px-4 py-2.5;
+  }
+
+  .chat-bubble-bot {
+    @apply bg-white/10 dark:bg-white/10 text-gray-800 dark:text-gray-100;
+    @apply border border-white/20 rounded-2xl rounded-tl-sm px-4 py-2.5;
+    @apply backdrop-blur-sm;
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-purple {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, rgba(0,245,255,0.5), rgba(0,102,255,0.5)) 1;
+  }
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Leaflet overrides for dark mode */
+.leaflet-container {
+  background: #0a0f2e !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(10, 15, 46, 0.95) !important;
+  border: 1px solid rgba(0, 245, 255, 0.3) !important;
+  color: #e2e8f0 !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px);
+}
+
+.leaflet-popup-tip {
+  background: rgba(10, 15, 46, 0.95) !important;
+}
+
+.iss-marker-pulse {
+  animation: markerPulse 2s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
